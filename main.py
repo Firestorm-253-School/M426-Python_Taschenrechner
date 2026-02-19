@@ -9,19 +9,22 @@ def multiplizieren(a, b):
 
 def dividieren(a, b):
     if b == 0:
-        print("Fehler: Division durch Null ist nicht erlaubt!")
         return None
     return a / b
 
+def process(func, a, b, symbol):
+    result = func(a, b)
+    print(f"Das Ergebnis ist: {a} {symbol} {b} = {result}")
+
 def main():
     print("Taschenrechner")
-    print("1 fuer Addition")
-    print("2 fuer Subtraktion")
-    print("3 fuer Multiplikation")
-    print("4 fuer Division")
+    print("+ fuer Addition")
+    print("- fuer Subtraktion")
+    print("* fuer Multiplikation")
+    print("/ fuer Division")
 
     wahl = input("Wahl eingeben: ")
-    if wahl not in ["1", "2", "3", "4"]:
+    if wahl not in ["+", "-", "*", "/"]:
         print("Falsche Auswahl, das Programm wird beendet.")
         return
     
@@ -38,21 +41,20 @@ def main():
     b = float(b)
 
     match wahl:
-        case "1":
-            ergebnis = addieren(a, b)
-            print(f"Das ergebnis ist {a} + {b} = {ergebnis}")
-        case "2":
-            ergebnis = subtrahieren(a, b)
-            print(f"Das ergebnis ist {a} - {b} = {ergebnis}")
-        case "3":
-            ergebnis = multiplizieren(a, b)
-            print(f"Das ergebnis ist {a} * {b} = {ergebnis}")
-        case "4":
+        case "+":
+            process(addieren, a, b, wahl)
+        case "-":
+            process(subtrahieren, a, b, wahl)
+        case "*":
+            process(multiplizieren, a, b, wahl)
+        case "/":
             ergebnis = dividieren(a, b)
-            if ergebnis is not None:
+            if not ergebnis:
+                print("Fehler: Division durch Null ist nicht erlaubt!")
+            else:
                 print(f"Das ergebnis ist {a} / {b} = {ergebnis}")
         case _:
-            print("Falsche Auswahl, das Programm wird beendet.")
+            raise Exception("Falsche Auswahl, das Programm wird beendet.")
 
 if __name__ == "__main__":
     main()
