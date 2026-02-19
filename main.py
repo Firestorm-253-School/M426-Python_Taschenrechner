@@ -1,4 +1,11 @@
 def main():
+    
+    def addieren(a, b):
+        return a + b
+    
+    def subtrahieren(a, b):
+        return a - b
+    
     print("Taschenrechner")
     print("1 fuer Addition")
     print("2 fuer Subtraktion")
@@ -9,11 +16,15 @@ def main():
 
     match wahl:
         case "1":
-            print("Gruppenmitglied 1 kann hier die Addition implementieren.")
-            # Hier Funktion für Addition einfügen
+            num1 = float(input("Erste Zahl eingeben: "))
+            num2 = float(input("Zweite Zahl eingeben: "))
+            ergebnis = addieren(num1, num2)
+            print(f"Das ergebnis ist {num1} + {num2} = {ergebnis}")
         case "2":
-            print("Gruppenmitglied 1 kann hier die Subtraktion implementieren.")
-            # Hier Funktion für die Subtraktion einfügen
+            num1 = float(input("Erste Zahl eingeben: "))
+            num2 = float(input("Zweite Zahl eingeben: "))
+            ergebnis = subtrahieren(num1, num2)
+            print(f"Das ergebnis ist {num1} - {num2} = {ergebnis}")
         case "3":
             print("Gruppenmitglied 2 kann hier die Multiplikation implementieren.")
             # Hier die Funktion für die Multiplikation einfügen
